@@ -78,40 +78,45 @@ public class FuncionesAhorcado {
 			noAcertadas += letra + " "; // Si no está presente la letra, se añade a la lista de letras erradas
 		}
 	}
-	
+
 	/**
-	 * Función que comprueba si se repite la letra introducida con alguna letra ya fallada
+	 * Función que comprueba si se repite la letra introducida con alguna letra ya
+	 * fallada
+	 * 
 	 * @param letra Recibe la letra introducida por parámetros
 	 * @return Devuelve un booleano que indica si la letra se repite o no
 	 */
 	public static Boolean letraErradaUsada(String letra) {
 		Boolean usada = false;
 		int cont = 0;
-		
-		//Mientras no se repita la letra y se siga recorriendo la palabra
-		while(cont < noAcertadas.length() && usada == false) { 
-			//Si la letra es igual a la letra en el indice 'cont' de la lista de letras no acertadas
-			if(letra.equalsIgnoreCase(String.valueOf(noAcertadas.charAt(cont)))) {
+
+		// Mientras no se repita la letra y se siga recorriendo la palabra
+		while (cont < noAcertadas.length() && usada == false) {
+			// Si la letra es igual a la letra en el indice 'cont' de la lista de letras no
+			// acertadas
+			if (letra.equalsIgnoreCase(String.valueOf(noAcertadas.charAt(cont)))) {
 				usada = true;
 			}
 			cont++;
 		}
 		return usada;
 	}
-	
+
 	/**
-	 * Función que comprueba si se repite la letra introducida con alguna letra ya acertada
+	 * Función que comprueba si se repite la letra introducida con alguna letra ya
+	 * acertada
+	 * 
 	 * @param letra Recibe la letra introducida por parámetros
 	 * @return Devuelve un booleano que indica si la letra se repite o no
 	 */
 	public static Boolean letraAcertadaUsada(String letra) {
 		Boolean usada = false;
 		int cont = 0;
-		
-		//Mientras no se repita la letra y se siga recorriendo la palabra
-		while(cont < palabraPista.length() && usada == false) {
-			//Si la letra es igual a la letra en el indice 'cont' de la pista
-			if(letra.equalsIgnoreCase(String.valueOf(palabraPista.charAt(cont)))) {
+
+		// Mientras no se repita la letra y se siga recorriendo la palabra
+		while (cont < palabraPista.length() && usada == false) {
+			// Si la letra es igual a la letra en el indice 'cont' de la pista
+			if (letra.equalsIgnoreCase(String.valueOf(palabraPista.charAt(cont)))) {
 				usada = true;
 			}
 			cont++;
@@ -141,12 +146,13 @@ public class FuncionesAhorcado {
 
 	/**
 	 * Función que muestra el resultado de la partida según los intentos que queden
-	 * una vez acabado el bucle while
+	 * y cuál sea la palabra pista una vez acabado el bucle while
 	 * 
 	 * @param intentos Número de intentos restantes
 	 */
 	public static void finJuego(int intentos) {
-		System.out.println(intentos > 0 ? "¡¡ENHORABUENA!! HAS ACERTADO"
-				: ("GAME OVER. La palabra correcta era " + palabraSecreta));
+		System.out.println(
+				(intentos > 0 && palabraPista.equalsIgnoreCase(palabraSecreta)) ? "¡¡ENHORABUENA!! HAS ACERTADO"
+						: ("GAME OVER. La palabra correcta era " + palabraSecreta));
 	}
 }
